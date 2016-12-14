@@ -49,5 +49,3 @@ namespace _232test1
     }
 
 }
-
-//  https://www.codeproject.com/articles/20929/simple-modbus-protocol-in-c-net
