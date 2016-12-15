@@ -7,7 +7,7 @@ namespace _232test1
 {
     public partial class Form1 : Form
     {
-        private modbus link;
+        private modbus link = new modbus();
 
         public Form1()
         {
