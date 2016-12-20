@@ -1,6 +1,4 @@
 using System;
-using System.Collections.Generic;
-using System.Text;
 using System.IO.Ports;
 
 // From https://www.codeproject.com/articles/20929/simple-modbus-protocol-in-c-net
