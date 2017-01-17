@@ -5,7 +5,7 @@ using System.IO.Ports;
 
 namespace Modbus_Poll_CS
 {
-    class modbus
+    public class modbus
     {
         private SerialPort sp = new SerialPort();
         public string modbusStatus;
