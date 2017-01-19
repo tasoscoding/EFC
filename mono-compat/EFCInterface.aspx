@@ -7,11 +7,13 @@
     </head>
     <body>
         <h3>Energy Flow Control Interface</h3>
-        <form id="messafeform" runat="server">
+        <form id="messageform" runat="server">
             <div>
-                inputbox: <asp:TextBox ID="inputbox" runat="server"></asp:TextBox><br />
-                outputbox: <asp:TextBox ID="outputbox" runat="server"></asp:TextBox><br />
-                <asp:Button ID="send" runat="server" Text="Send" OnClick="send_click" /><br />
+                <span><asp:TextBox ID="inputbox" runat="server"></asp:TextBox></span>
+                <span><asp:Button ID="send" runat="server" Text="Send" OnClick="send_click" /></span>
+            </div>
+            <div>
+                <asp:Label ID="outputbox" runat="server"></asp:Label>
             </div>
         </form>
     </body>

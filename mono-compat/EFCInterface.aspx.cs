@@ -8,7 +8,7 @@ public partial class EFCInterface: Page
     protected void send_click(object sender, EventArgs e)
     {
         modbus link = new modbus();
-        string port = "COM3";
+        string port = "/dev/ttyUSB0";
         link.Open(port, 9600, 8, Parity.None, StopBits.Two);
         string input = inputbox.Text;
         string[] values = input.Split(' ');
@@ -40,6 +40,6 @@ public partial class EFCInterface: Page
 
     void writeLine(string s)
     {
-        outputbox.Text += s + "\n";
+        outputbox.Text += s + "<br />";
     }
 }
