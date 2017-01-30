@@ -19,7 +19,25 @@ namespace EFC
         Stopped = 0b00,
         Running = 0b01,
         Reverse = 0b10
+        Fault = 0b11,
+        Accelerating = 0b100,
+        Decelerating = 0b101,
+        SpeedReached = 0b110,
+        DcBreaking = 0b111
     }
+
+    public enum EngineModel {
+        VegaDrive = 7
+    }
+
+    public enum EngineVersion {
+        Version_1_0_E = 313045,
+        Version_5_0_E = 353045        
+    }
+
+
+
+
     public interface IEngine
     {
         EngineStatus Status();
@@ -28,5 +46,10 @@ namespace EFC
         void Reverse();
         void Reset();
         void EmergencyStop();
+
+        EngineModel GetInverterModel();
+        EngineVersion GetInverterVersion();
+        void SetReferneceFrequenct(int newFrequency);
+
     }
 }

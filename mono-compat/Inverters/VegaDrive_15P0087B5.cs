@@ -83,6 +83,32 @@ namespace EFC
             {
                 WriteRegister(0x6, 0b00001);
             }
+
+            public EngineModel GetInverterModel() {
+                short model = ReadRegister(0x00);
+                switch (model) {
+                    case 7:
+                        return EngineModel.VegaDrive;
+                    default:
+                        throw new EngineMessageException("The inverter responded with unknown model code " + model.ToString() + "in register 0x0");
+                }
+            }
+
+            public EngineVersion GetInverterVersion() {
+                short version = ReadRegister(0x03);
+                switch (version) {
+                    case 313045:
+                        return EngineVersion.Version_1_0_E;
+                    case 353045:
+                        return EngineVersion.Version_1_0_E;
+                    default:
+                        throw new EngineMessageException("The inverter responded with unknown version code " + version.ToString() + " in register 0x03");
+                }
+            }
+
+            public void SetReferneceFrequenct(int newFrequency) {
+                WriteRegister(0x05, (short)newFrequency);
+            }
         }
     }
 }
