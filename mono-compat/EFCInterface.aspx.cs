@@ -13,32 +13,32 @@ public partial class EFCInterface: Page
         engine = new VegaDrive("/dev/ttyUSB0", 1);
     } 
 
-    protected void StartEngine()
+    protected void StartEngine(object sender, EventArgs e)
     {
         engine.Start();
     }
 
-    protected void StopEngine()
+    protected void StopEngine(object sender, EventArgs e)
     {
         engine.Stop();
     }
 
-    protected void ReverseEngine()
+    protected void ReverseEngine(object sender, EventArgs e)
     {
         engine.Reverse();
     }
 
-    protected void ResetEngine()
+    protected void ResetEngine(object sender, EventArgs e)
     {
         engine.Reset();
     }
 
-    protected void EmergencyStopEngine()
+    protected void EmergencyStopEngine(object sender, EventArgs e)
     {
         engine.EmergencyStop();
     }
 
-    protected void GetEngineStatus()
+    protected void GetEngineStatus(object sender, EventArgs e)
     {
         EngineStatus s = engine.Status();
         writeLine("Engine Status: " + s.ToString());

@@ -43,22 +43,22 @@ namespace EFC
 
             public void EmergencyStop()
             {
-                WriteRegister(0x6, 0b10000);
+                WriteRegister(0x6, 0x10);
             }
 
             public void Reset()
             {
-                WriteRegister(0x6, 0b01000);
+                WriteRegister(0x6, 0x8);
             }
 
             public void Reverse()
             {
-                WriteRegister(0x6, 0b00100);
+                WriteRegister(0x6, 0x4);
             }
 
             public void Start()
             {
-                WriteRegister(0x6, 0b00010);
+                WriteRegister(0x6, 0x2);
             }
 
             public EngineStatus Status()
@@ -66,11 +66,11 @@ namespace EFC
                 short s = ReadRegister(0x6);
                 switch (s)
                 {
-                    case 0b00001:
+                    case 0x1:
                         return EngineStatus.Stopped;
-                    case 0b00010:
+                    case 0x2:
                         return EngineStatus.Running;
-                    case 0b00100:
+                    case 0x4:
                         return EngineStatus.Reverse;
                     default:
                         throw new EngineMessageException(
@@ -81,7 +81,7 @@ namespace EFC
 
             public void Stop()
             {
-                WriteRegister(0x6, 0b00001);
+                WriteRegister(0x6, 0x1);
             }
 
             public EngineModel GetInverterModel() {
@@ -97,10 +97,10 @@ namespace EFC
             public EngineVersion GetInverterVersion() {
                 short version = ReadRegister(0x03);
                 switch (version) {
-                    case 313045:
+                    case 1:  // Return values in the manual are bonkers.
                         return EngineVersion.Version_1_0_E;
-                    case 353045:
-                        return EngineVersion.Version_1_0_E;
+                    case 5:
+                        return EngineVersion.Version_5_0_E;
                     default:
                         throw new EngineMessageException("The inverter responded with unknown version code " + version.ToString() + " in register 0x03");
                 }

@@ -16,14 +16,14 @@ namespace EFC
     [Flags]
     public enum EngineStatus
     {
-        Stopped = 0b00,
-        Running = 0b01,
-        Reverse = 0b10
-        Fault = 0b11,
-        Accelerating = 0b100,
-        Decelerating = 0b101,
-        SpeedReached = 0b110,
-        DcBreaking = 0b111
+        Stopped = 0,
+        Running = 1,
+        Reverse = 2,
+        Fault = 4,
+        Accelerating = 8,
+        Decelerating = 10,
+        SpeedReached = 1,
+        DcBreaking = 14
     }
 
     public enum EngineModel {
