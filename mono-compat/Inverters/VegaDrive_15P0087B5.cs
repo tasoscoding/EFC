@@ -34,7 +34,7 @@ namespace EFC
 					"Writing 0x" + value.ToString("x") + 
 					" to register 0x" + reg.ToString("x") + 
 					" to address 0x" + address.ToString("x"));
-                ret = link.SendFc3(address, reg, 1, ref val);
+                ret = link.SendFc16(address, reg, 1, val);
                 if (!ret) throw new EngineMessageException(
                     "Writing 0x" + value.ToString("x") + 
                     " to register 0x" + reg.ToString("x") + " failed: " + link.modbusStatus);
