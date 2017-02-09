@@ -23,16 +23,23 @@ namespace EFC
                 return val[0];
             }
 
-            public void WriteRegister(ushort reg, short value)
+            public bool WriteRegister(ushort reg, short value)
             {
                 modbus link = new modbus();
-                link.Open(port, 9600, 8, Parity.None, StopBits.Two);
+				bool ret = link.Open(port, 9600, 8, Parity.None, StopBits.Two);
+				if (!ret) throw new EngineMessageException (
+					"Opening port " + port + " failed: " + link.modbusStatus);
                 short[] val = { value };
-                bool ret = link.SendFc3(address, reg, 1, ref val);
+				Logger.log(
+					"Writing 0x" + value.ToString("x") + 
+					" to register 0x" + reg.ToString("x") + 
+					" to address 0x" + address.ToString("x"));
+                ret = link.SendFc3(address, reg, 1, ref val);
                 if (!ret) throw new EngineMessageException(
                     "Writing 0x" + value.ToString("x") + 
                     " to register 0x" + reg.ToString("x") + " failed: " + link.modbusStatus);
                 link.Close();
+				return ret;
             }
 
             public VegaDrive_15P0087B5(String port, byte address)

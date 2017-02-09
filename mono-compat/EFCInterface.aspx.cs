@@ -7,6 +7,12 @@ using VegaDrive = EFC.Engines.VegaDrive_15P0087B5;
 public partial class EFCInterface: Page
 {
     private IEngine engine;
+
+	public EFCInterface()
+	{
+		Logger.setLoggingFunction (writeLine);
+	}
+
     protected override void OnLoad(EventArgs e)
     {
         base.OnLoad(e);
@@ -56,8 +62,8 @@ public partial class EFCInterface: Page
         {
             if (values.Length > 1)
             {
-                vegaeng.WriteRegister(addr, Convert.ToInt16(values[1]));
-                write("Successfully wrote " + values[1] + " to address " + values[0]);
+				vegaeng.WriteRegister(addr, Convert.ToInt16(values[1]));
+				writeLine("Successfully wrote " + values[1] + " to address " + values[0]);
             }
             else
             {
