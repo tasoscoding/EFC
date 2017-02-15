@@ -6,7 +6,7 @@ using RpiWebApi.ResponseClass;
 using System.Collections.Generic;
 using System.Web.Http;
 
-namespace RpiWebApi.App_Data
+namespace RpiWebApi.Controllers
 {
     public class InverterController : ApiController
     {
@@ -15,11 +15,10 @@ namespace RpiWebApi.App_Data
             try {
                 InverterStatusResponse response = new InverterStatusResponse();
                 IEngine engine = new TestEngine();
-
+                
                 NumericValue currentValue;
                 NumericValue frequencyValue;
                 NumericValue voltageValue;
-
 
                 EngineOperationResult currentResult = engine.GetCurrentValue();
                 if (currentResult.isSuccessful()) {

@@ -53,7 +53,7 @@ namespace RpiWebApi.ResponseClass {
             operation.operationType = type;
 
             if (opMessage.Frequency != null) {
-                operation.frequency = int.Parse(opMessage.Frequency);
+                Int32.TryParse(opMessage.Frequency, out operation.frequency);
             }
 
             return operation;
