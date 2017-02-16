@@ -19,10 +19,18 @@ namespace RpiWebApi.CoreClasses {
             return new EngineOutputValueResult(value);
         }
 
+        public EngineOperationResult GetInverterModel() {
+            return new EngineOutputConstantResult<EngineModel>(new EngineModel(-1));
+        }
+
         public EngineOperationResult GetRpmValue() {
             NumericValue value = new NumericValue();
             value.value = 12;
             return new EngineOutputValueResult(value);
+        }
+
+        public EngineOperationResult GetStatus() {
+            return new EngineOutputConstantResult<EngineStatus>(new EngineStatus(-1));
         }
 
         public EngineOperationResult GetVoltageValue() {

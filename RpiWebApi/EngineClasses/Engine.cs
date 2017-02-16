@@ -16,11 +16,9 @@ namespace RpiWebApi.EngineClasses
 
     public interface IEngine
     {
-        /*
-            EngineOperationResult GetStatus();
-            EngineOperationResult GetInverterModel();
-            EngineOperationResult GetInverterVersion();
-        */
+        
+        EngineOperationResult GetStatus();
+        EngineOperationResult GetInverterModel();     
 
         EngineOperationResult Start();
         EngineOperationResult Stop();

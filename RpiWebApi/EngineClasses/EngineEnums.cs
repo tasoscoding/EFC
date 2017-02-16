@@ -1,24 +1,33 @@
 ﻿using System;
 
 namespace RpiWebApi.EngineClasses {
-    [Flags]
-    public enum EngineStatus  {
-        Stopped = 0,
-        Running = 1,
-        Reverse = 2,
-        Fault = 4,
-        Accelerating = 8,
-        Decelerating = 10,
-        SpeedReached = 1,
-        DcBreaking = 14
+    public class EngineConstant { }
+
+
+    public class EngineStatus : EngineConstant {
+        public static readonly String Stopped = "stopped";
+        public static readonly String Running = "running";
+        public static readonly String Reverse = "reverse";
+        public static readonly String Fault = "fault";
+        public static readonly String Accelerating = "accelerating";
+        public static readonly String Decelerating = "develerating";
+        public static readonly String SpeedReached = "speedreached";
+        public static readonly String DcBreaking = "dcbreaking";
+
+        public String Status { get; private set; }
+
+        public EngineStatus(int statusCode) {
+            this.Status = Stopped;
+        }
     }
 
-    public enum EngineModel {
-        VegaDrive = 7
-    }
+    public class EngineModel : EngineConstant {
+        public static readonly String VegaDrive = "vegadrive";
 
-    public enum EngineVersion {
-        Version_1_0_E = 313045,
-        Version_5_0_E = 353045
+        public String Model { get; private set; }
+
+        public EngineModel(int modelCode) {
+            this.Model = VegaDrive;
+        }
     }
 }

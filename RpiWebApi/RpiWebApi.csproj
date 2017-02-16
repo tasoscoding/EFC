@@ -128,7 +128,7 @@
     <Compile Include="AuthServices\Token.cs" />
     <Compile Include="Controllers\InverterController.cs" />
     <Compile Include="App_Start\WebApiConfig.cs" />
-    <Compile Include="EngineClasses\ConstantOutput.cs" />
+    <Compile Include="EngineClasses\ConstantValue.cs" />
     <Compile Include="EngineClasses\Engine.cs" />
     <Compile Include="EngineClasses\EngineEnums.cs" />
     <Compile Include="CoreClasses\Modbus.cs" />

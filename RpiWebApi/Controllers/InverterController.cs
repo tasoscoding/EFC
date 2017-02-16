@@ -13,13 +13,15 @@ namespace RpiWebApi.Controllers
         [HttpGet]
         [Route("api/inverter/status")]
         public IHttpActionResult Status() {
-            try {
                 InverterStatusResponse response = new InverterStatusResponse();
                 IEngine engine = new TestEngine();
                 
                 NumericValue currentValue;
                 NumericValue frequencyValue;
                 NumericValue voltageValue;
+
+                ConstantValue<EngineModel> model;
+                ConstantValue<EngineStatus> status;
 
                 EngineOperationResult currentResult = engine.GetCurrentValue();
                 if (currentResult.isSuccessful()) {
@@ -38,10 +40,21 @@ namespace RpiWebApi.Controllers
                     frequencyValue = (NumericValue) frequencyResult.GetOutput();
                     response.Frequency = frequencyValue.value;
                 }
+
+                EngineOperationResult modelResult = engine.GetInverterModel();
+                if (modelResult.isSuccessful()) {
+                    model = (ConstantValue<EngineModel>)modelResult.GetOutput();
+                    response.EngineModel = model.constant.Model;
+                }
+
+                EngineOperationResult statusResult = engine.GetStatus();
+                if (statusResult.isSuccessful()) {
+                    status = (ConstantValue<EngineStatus>)statusResult.GetOutput();
+                    response.EngineStatus = status.constant.Status;
+                }
+
                 return Ok(response);
-            } catch {
-                return BadRequest();
-            }
+            
         }
 
         [HttpPost]
@@ -66,6 +79,7 @@ namespace RpiWebApi.Controllers
         }
 
         [HttpGet]
+        [Route("api/inverter/value")]
         public IHttpActionResult Value() {
             return null;
         }

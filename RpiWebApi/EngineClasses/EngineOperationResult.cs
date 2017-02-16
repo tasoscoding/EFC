@@ -28,4 +28,18 @@
             return numericValue;
         }
     }
+
+    public class EngineOutputConstantResult<T> : EngineOperationResult where T : EngineConstant {
+        private ConstantValue<T> constantValue;
+
+        public EngineOutputConstantResult(T value) : base(true) {
+            this.constantValue = new ConstantValue<T> {
+                constant = value
+            };
+        }
+
+        public override EngineOutput GetOutput() {
+            return constantValue;
+        }
+    }
 }
