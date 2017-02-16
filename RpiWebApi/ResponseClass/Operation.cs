@@ -13,6 +13,10 @@ namespace RpiWebApi.ResponseClass {
 
         [JsonProperty("frequency")]
         public string Frequency { get; set; }
+
+        public bool isValid() {
+            return this.ΟperationType != null && this.Frequency != null;
+        }
     }
 
     [Flags]

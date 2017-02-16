@@ -11,6 +11,7 @@ namespace RpiWebApi.Controllers
     public class InverterController : ApiController
     {
         [HttpGet]
+        [Route("api/inverter/status")]
         public IHttpActionResult Status() {
             try {
                 InverterStatusResponse response = new InverterStatusResponse();
@@ -44,17 +45,22 @@ namespace RpiWebApi.Controllers
         }
 
         [HttpPost]
+        [Route("api/inverter/operation")]
         public IHttpActionResult Operation([FromBody] OperationMessage operationMessage) {
-            OperationConstructor constructor = new OperationConstructor(operationMessage);
-            Operation operation = constructor.CreateOperation();
+            if (operationMessage != null && operationMessage.isValid()) {
+                OperationConstructor constructor = new OperationConstructor(operationMessage);
+                Operation operation = constructor.CreateOperation();
+                OperationExecutor executor = OperationExecutor.GetInstance();
 
-            OperationExecutor executor = OperationExecutor.GetInstance();
-            EngineOperationResult engineResult = executor.ExecuteOperation(operation);
+                EngineOperationResult engineResult = executor.ExecuteOperation(operation);
 
-            if (engineResult.isSuccessful()) {
-                return Ok();
+                if (engineResult.isSuccessful()) {
+                    return Ok();
+                } else {
+                    return BadRequest("Bad operation");
+                }
             } else {
-                return BadRequest();
+                return BadRequest("Wrong Json Format");
             }
             
         }

@@ -33,7 +33,7 @@ namespace RpiWebApi.CoreClasses {
             } else if (type == OperationType.ChangeFrequency) {
                 return engine.SetReferenceFrequency(operation.frequency);
             } else {
-                return new EngineOperationResult(true);
+                return new EngineOperationResult(false);
             }
 
         } 
