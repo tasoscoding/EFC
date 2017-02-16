@@ -23,16 +23,16 @@ namespace RpiWebApi.ResponseClass {
         [JsonProperty("version", NullValueHandling = NullValueHandling.Ignore)]
         public string EngineVersion { get; set; }
 
-        [JsonProperty("frequency")]
+        [JsonProperty("frequency", NullValueHandling = NullValueHandling.Ignore)]
         public int Frequency { get; set; }
 
-        [JsonProperty("voltage")]
+        [JsonProperty("voltage", NullValueHandling = NullValueHandling.Ignore)]
         public int Voltage { get; set; }
 
-        [JsonProperty("rpm")]
+        [JsonProperty("rpm", NullValueHandling = NullValueHandling.Ignore)]
         public int Rpm { get; set; }
 
-        [JsonProperty("current")]
+        [JsonProperty("current", NullValueHandling = NullValueHandling.Ignore)]
         public int Current { get; set; }
 
         public InverterStatusResponse() {
