@@ -20,7 +20,7 @@ namespace RpiWebApi.CoreClasses {
         }
 
         public EngineOperationResult GetInverterModel() {
-            return new EngineOutputConstantResult<EngineModel>(new EngineModel(-1));
+            return new EngineOutputConstantResult<EngineModel>(new EngineModel(0));
         }
 
         public EngineOperationResult GetRpmValue() {
@@ -30,7 +30,7 @@ namespace RpiWebApi.CoreClasses {
         }
 
         public EngineOperationResult GetStatus() {
-            return new EngineOutputConstantResult<EngineStatus>(new EngineStatus(-1));
+            return new EngineOutputConstantResult<EngineStatus>(new EngineStatus(0));
         }
 
         public EngineOperationResult GetVoltageValue() {
