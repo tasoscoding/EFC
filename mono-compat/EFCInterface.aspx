@@ -13,10 +13,12 @@
                 <span><asp:Button ID="startBtn" runat="server" Text="Start" OnClick="StartEngine" /></span>
                 <span><asp:Button ID="stopBtn" runat="server" Text="Stop" OnClick="StopEngine" /></span>
                 <span><asp:Button ID="reverseBtn" runat="server" Text="Reverse" OnClick="ReverseEngine" /></span>
-            </div>
-            <div>
                 <span><asp:Button ID="haltBtn" runat="server" Text="Emergency Stop" OnClick="EmergencyStopEngine" /></span>
                 <span><asp:Button ID="resetBtn" runat="server" Text="Reset Inverter" OnClick="ResetEngine" /></span>
+            </div>
+            <div>
+                Frequency: <span><asp:TextBox ID="freqbox" runat="server"></asp:TextBox></span>Hz
+                <span><asp:Button ID="setFreq" runat="server" Text="Set" OnClick="setFreq_click" /></span>
             </div>
             <div>
                 <span><asp:TextBox ID="inputbox" runat="server"></asp:TextBox></span>

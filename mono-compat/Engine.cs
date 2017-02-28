@@ -45,7 +45,9 @@ namespace EFC
         void Stop();
         void Reverse();
         void Reset();
-        void EmergencyStop();
+		void EmergencyStop();
+		float GetFrequency();
+		void SetFrequency(float frequency);
 
         EngineModel GetInverterModel();
         EngineVersion GetInverterVersion();

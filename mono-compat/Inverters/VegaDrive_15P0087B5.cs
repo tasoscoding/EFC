@@ -91,6 +91,16 @@ namespace EFC
                 WriteRegister(0x6, 0x1);
             }
 
+			public float GetFrequency()
+			{
+				return Convert.ToSingle (ReadRegister (0x5)) / 100.0f;
+			}
+
+			public void SetFrequency(float frequency)
+			{
+				WriteRegister (0x5, Convert.ToInt16 (frequency * 100));
+			}
+
             public EngineModel GetInverterModel() {
                 short model = ReadRegister(0x00);
                 switch (model) {

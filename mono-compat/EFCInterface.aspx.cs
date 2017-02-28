@@ -50,6 +50,12 @@ public partial class EFCInterface: Page
         writeLine("Engine Status: " + s.ToString());
     }
 
+	protected void setFreq_click(object sender, EventArgs e)
+	{
+		string input = freqbox.Text;
+		float hertz = Convert.ToSingle (input);
+		engine.SetFrequency (hertz);
+	}
 
     /// Debug function for directly accessing vega drive's registers. 
     protected void send_click(object sender, EventArgs e)
