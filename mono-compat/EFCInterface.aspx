@@ -17,8 +17,10 @@
                 <span><asp:Button ID="resetBtn" runat="server" Text="Reset Inverter" OnClick="ResetEngine" /></span>
             </div>
             <div>
-                Frequency: <span><asp:TextBox ID="freqbox" runat="server"></asp:TextBox></span>Hz
+                Frequency: <span><asp:TextBox ID="freqsetbox" runat="server"></asp:TextBox></span>Hz
                 <span><asp:Button ID="setFreq" runat="server" Text="Set" OnClick="setFreq_click" /></span>
+                <span><asp:Button ID="getFreq" runat="server" Text="Get" OnClick="getFreq_click" /></span>
+                <span><asp:Label ID="freqgetbox" runat="server"></asp:Label></span>
             </div>
             <div>
                 <span><asp:TextBox ID="inputbox" runat="server"></asp:TextBox></span>
