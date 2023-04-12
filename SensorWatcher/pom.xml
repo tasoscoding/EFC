@@ -3,11 +3,11 @@
   <modelVersion>4.0.0</modelVersion>
 
   <groupId>Efc</groupId>
-  <artifactId>ArduinoPort</artifactId>
+  <artifactId>SensorWatcher</artifactId>
   <version>0.0.1-SNAPSHOT</version>
   <packaging>jar</packaging>
 
-  <name>ArduinoPort</name>
+  <name>SensorWatcher</name>
   <url>http://maven.apache.org</url>
 
   <properties>
@@ -54,7 +54,7 @@
       <archive>
         <manifest>
           <addClasspath>true</addClasspath>
-          <mainClass>Efc.ArduinoPort.App</mainClass>
+          <mainClass>Efc.SensorWatcher.App</mainClass>
         </manifest>
       </archive>
       <descriptorRefs>

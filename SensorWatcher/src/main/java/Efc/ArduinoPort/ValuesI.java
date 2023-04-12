@@ -1,4 +1,4 @@
-package Efc.ArduinoPort;
+package Efc.SensorWatcher;
 
 import com.google.gson.annotations.Expose;
 import com.google.gson.annotations.SerializedName;

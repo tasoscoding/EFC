@@ -1,4 +1,4 @@
-package Efc.ArduinoPort;
+package Efc.SensorWatcher;
 
 import junit.framework.TestCase;
 

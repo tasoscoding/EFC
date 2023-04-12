@@ -1,4 +1,4 @@
-package Efc.ArduinoPort;
+package Efc.SensorWatcher;
 
 import java.io.IOException;
 import java.text.SimpleDateFormat;
