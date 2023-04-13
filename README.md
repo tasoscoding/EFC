@@ -21,3 +21,7 @@ Same as above, but uses the Universal Windows Platform framework.
 This project is a working prototype with a web interface for controlling the inverter, implemented in ASP.NET.
 It supports the main functions of the VegaDrive 15P0087B5 inverter.
 It has a Sensor Watcher module for gathering the data collected by sensors and uploading them to the cloud service.
+
+#### RpiWebApi
+An industrialized version of the prototype containing a Web Api aiming to be deployed onto the target control machines (the Raspberry Pi's)
+and controlled by a web interface (a frontend) as well as the cloud service (as a feedback loop). Structured to support multiple types of inverters.
