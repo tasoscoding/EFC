@@ -7,8 +7,8 @@
     <ProjectGuid>{E7F64969-62A8-46E8-BCCA-C1DC4F65699E}</ProjectGuid>
     <OutputType>Exe</OutputType>
     <AppDesignerFolder>Properties</AppDesignerFolder>
-    <RootNamespace>mono_compat</RootNamespace>
-    <AssemblyName>mono-compat</AssemblyName>
+    <RootNamespace>EFC.Prototype</RootNamespace>
+    <AssemblyName>EFC.Prototype</AssemblyName>
     <TargetFrameworkVersion>v4.0</TargetFrameworkVersion>
     <FileAlignment>512</FileAlignment>
     <AutoGenerateBindingRedirects>true</AutoGenerateBindingRedirects>

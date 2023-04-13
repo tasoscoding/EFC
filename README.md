@@ -16,3 +16,8 @@ This project is an initial proof of concept that an inverter can be controlled b
 
 #### PoC.UWP
 Same as above, but uses the Universal Windows Platform framework.
+
+#### Prototype
+This project is a working prototype with a web interface for controlling the inverter, implemented in ASP.NET.
+It supports the main functions of the VegaDrive 15P0087B5 inverter.
+It has a Sensor Watcher module for gathering the data collected by sensors and uploading them to the cloud service.
