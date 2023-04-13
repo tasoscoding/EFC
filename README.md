@@ -14,3 +14,6 @@ The repository that manages the cloud infrastructure can be found here: https://
 
 #### PoC.DesktopApp
 This project is an initial proof of concept that an inverter can be controlled by a computer using a serial protocol. It is a Windows Forms desktop app, and uses a sample Modbus implementation in C# (by distantcity @ codeproject, https://www.codeproject.com/articles/20929/simple-modbus-protocol-in-c-net).
+
+#### PoC.UWP
+Same as above, but uses the Universal Windows Platform framework.

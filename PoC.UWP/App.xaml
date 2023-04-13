@@ -1,8 +1,8 @@
 ﻿<Application
-    x:Class="FirstRpiUWP.App"
+    x:Class="EFC.PoC.UWP.App"
     xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
     xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
-    xmlns:local="using:FirstRpiUWP"
+    xmlns:local="using:EFC.PoC.UWP"
     RequestedTheme="Light">
 
 </Application>
