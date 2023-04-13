@@ -1,7 +1,6 @@
 Energy Flow Control
 ===================
 
-## Intro
 EFC is an experimental project created at the Electric Drives laboratory of the School of Electrical and Computer Engineering at the National Technical University of Athens.
 Its aim is to explore control of industrial machines using smart electronics and the cloud.
 
