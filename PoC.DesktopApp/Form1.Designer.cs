@@ -1,4 +1,4 @@
-﻿namespace _232test1
+﻿namespace EFC.PoC.DesktopApp
 {
     partial class Form1
     {

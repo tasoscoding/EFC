@@ -3,7 +3,7 @@ using System.Windows.Forms;
 using Modbus_Poll_CS;
 using System.IO.Ports;
 
-namespace _232test1
+namespace EFC.PoC.DesktopApp
 {
     public partial class Form1 : Form
     {

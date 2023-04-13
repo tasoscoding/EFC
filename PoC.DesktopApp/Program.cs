@@ -1,7 +1,7 @@
 ﻿using System;
 using System.Windows.Forms;
 
-namespace _232test1
+namespace EFC.PoC.DesktopApp
 {
     static class Program
     {

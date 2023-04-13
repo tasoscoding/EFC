@@ -8,7 +8,7 @@
 // </auto-generated>
 //------------------------------------------------------------------------------
 
-namespace _232test1.Properties
+namespace EFC.PoC.DesktopApp.Properties
 {
 
 
