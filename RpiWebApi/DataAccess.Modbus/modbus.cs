@@ -8,7 +8,7 @@ namespace Modbus_Poll_CS
     public class Modbus
     {
         private SerialPort sp = new SerialPort();
-        public string modbusStatus;
+        public string modbusStatus = "Serial port not open";
 
         #region Constructor / Deconstructor
         public Modbus()

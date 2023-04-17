@@ -1,87 +1,82 @@
-﻿
-using Newtonsoft.Json;
-using RpiWebApi.CoreClasses;
-using RpiWebApi.EngineClasses;
-using RpiWebApi.ResponseClass;
-using System.Collections.Generic;
-using System.Web.Http;
+﻿using Microsoft.AspNetCore.Mvc;
+using RpiWebApi.Infrastructure;
 
 namespace RpiWebApi.Controllers
 {
-    public class InverterController : ApiController
+    [ApiController]
+    [Route("[controller]")]
+    public class InverterController : ControllerBase
     {
-        [HttpGet]
-        [Route("api/inverter/status")]
-        public IHttpActionResult Status() {
-                InverterStatusResponse response = new InverterStatusResponse();
-                IEngine engine = new TestEngine();
-                
-                NumericValue currentValue;
-                NumericValue frequencyValue;
-                NumericValue voltageValue;
+        public IInverterRepository InverterRepository { get; }
+        private Inverter localInverter { get; }
 
-                ConstantValue<EngineModel> model;
-                ConstantValue<EngineStatus> status;
-
-                EngineOperationResult currentResult = engine.GetCurrentValue();
-                if (currentResult.isSuccessful()) {
-                    currentValue = (NumericValue) currentResult.GetOutput();
-                    response.Current = currentValue.value;
-                }
-
-                EngineOperationResult voltageResult = engine.GetVoltageValue();
-                if (voltageResult.isSuccessful()) {
-                    voltageValue = (NumericValue) voltageResult.GetOutput();
-                    response.Voltage = voltageValue.value;
-                }
-
-                EngineOperationResult frequencyResult = engine.GetFrequencyValue();
-                if (frequencyResult.isSuccessful()) {
-                    frequencyValue = (NumericValue) frequencyResult.GetOutput();
-                    response.Frequency = frequencyValue.value;
-                }
-
-                EngineOperationResult modelResult = engine.GetInverterModel();
-                if (modelResult.isSuccessful()) {
-                    model = (ConstantValue<EngineModel>)modelResult.GetOutput();
-                    response.EngineModel = model.constant.Model;
-                }
-
-                EngineOperationResult statusResult = engine.GetStatus();
-                if (statusResult.isSuccessful()) {
-                    status = (ConstantValue<EngineStatus>)statusResult.GetOutput();
-                    response.EngineStatus = status.constant.Status;
-                }
-
-                return Ok(response);
-            
+        public InverterController(
+            IInverterRepository inverterRepository)
+        {
+            InverterRepository = inverterRepository;
+            localInverter = inverterRepository.GetAll().First();
         }
 
-        [HttpPost]
-        [Route("api/inverter/operation")]
-        public IHttpActionResult Operation([FromBody] OperationMessage operationMessage) {
-            if (operationMessage != null && operationMessage.isValid()) {
-                OperationConstructor constructor = new OperationConstructor(operationMessage);
-                Operation operation = constructor.CreateOperation();
-                OperationExecutor executor = OperationExecutor.GetInstance();
+        #region Read operations
 
-                EngineOperationResult engineResult = executor.ExecuteOperation(operation);
-
-                if (engineResult.isSuccessful()) {
-                    return Ok();
-                } else {
-                    return BadRequest("Bad operation");
-                }
-            } else {
-                return BadRequest("Wrong Json Format");
-            }
-            
+        [HttpGet]
+        [Route("reference-frequency")]
+        public ActionResult<double> ReferenceFrequency() {
+            return InverterRepository.GetReferenceFrequency(localInverter);
         }
 
         [HttpGet]
-        [Route("api/inverter/value")]
-        public IHttpActionResult Value() {
-            return null;
+        [Route("status")]
+        public ActionResult<string> Status() {
+            return InverterRepository.GetStatus(localInverter);
         }
+
+        #endregion
+
+        #region Write operations
+
+        [HttpPut]
+        [Route("emergency-stop")]
+        public ActionResult EmergencyStop() {
+            InverterRepository.EmergencyStop(localInverter);
+            return Ok();
+        }
+
+        [HttpPut]
+        [Route("reference-frequency")]
+        public ActionResult ReferenceFrequency(double frequency) {
+            InverterRepository.SetReferenceFrequency(localInverter, frequency);
+            return Ok();
+        }
+
+        [HttpPut]
+        [Route("reset")]
+        public ActionResult Reset() {
+            InverterRepository.Reset(localInverter);
+            return Ok();
+        }
+
+        [HttpPut]
+        [Route("reverse")]
+        public ActionResult Reverse() {
+            InverterRepository.Reverse(localInverter);
+            return Ok();
+        }
+
+        [HttpPut]
+        [Route("start")]
+        public ActionResult Start() {
+            InverterRepository.Start(localInverter);
+            return Ok();
+        }
+
+        [HttpPut]
+        [Route("stop")]
+        public ActionResult Stop() {
+            InverterRepository.Stop(localInverter);
+            return Ok();
+        }
+
+        #endregion
     }
 }
